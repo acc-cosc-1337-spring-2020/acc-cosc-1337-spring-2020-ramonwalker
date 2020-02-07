@@ -9,3 +9,29 @@
 //returns 'Option 4' when value 4
 //return 'Invalid Option' otherwise
 
+string menu(int num)
+{
+	string result;
+
+	switch (num)
+	{
+	case 1:
+		restult = "Option 1";
+		break;
+
+	case 2:
+		restult = "Option 2";
+		break;
+
+	case 3:
+		restult = "Option 3";
+		break;
+
+	case 4:
+		restult = "Option 4";
+		break;
+	default:
+		result = "Invalid Option";
+	}
+	return result;
+}
