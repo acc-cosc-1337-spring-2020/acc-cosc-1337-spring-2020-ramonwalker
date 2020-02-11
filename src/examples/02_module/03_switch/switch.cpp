@@ -16,19 +16,19 @@ string menu(int num)
 	switch (num)
 	{
 	case 1:
-		restult = "Option 1";
+		result = "Option 1";
 		break;
 
 	case 2:
-		restult = "Option 2";
+		result = "Option 2";
 		break;
 
 	case 3:
-		restult = "Option 3";
+		result = "Option 3";
 		break;
 
 	case 4:
-		restult = "Option 4";
+		result = "Option 4";
 		break;
 	default:
 		result = "Invalid Option";

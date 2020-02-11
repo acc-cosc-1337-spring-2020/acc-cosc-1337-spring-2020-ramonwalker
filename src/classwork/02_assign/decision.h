@@ -4,9 +4,4 @@
 
 //NOTE: gross pay = 2 * regular rate
 
-
 double gross_pay(double hours, double hourly_rate);
-
-
-
-
