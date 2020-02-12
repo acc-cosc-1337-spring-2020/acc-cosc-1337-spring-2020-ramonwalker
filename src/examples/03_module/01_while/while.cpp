@@ -26,7 +26,7 @@ int sum_of_squares(int num)
 
 	while (counter <= num)
 	{
-		sum = sum + num * num;
+		sum = sum + counter * counter;
 			counter = counter + 1;
 	}
 
