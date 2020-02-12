@@ -19,3 +19,16 @@ l
 
 */
 
+int sum_of_squares(int num)
+{
+	int sum = 0;
+	int counter = 1;
+
+	while (counter <= num)
+	{
+		sum = sum + num * num;
+			counter = counter + 1;
+	}
+
+	return sum;
+}
