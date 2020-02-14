@@ -20,7 +20,7 @@ TEST_CASE("Verify letter_grade function")
 
 TEST_CASE("Verify credit_hours and credit_points parameter function")
 {
-	REQUIRE(calculate_gpa(credit_hours, credit_points) == 3.75);
-	REQUIRE(calculate_gpa(credit_hours, credit_points) == 3.25);
-	REQUIRE(calculate_gpa(credit_hours, credit_points) == 2.0);
+	REQUIRE(calculate_gpa(12, 45) == 3.75);
+	REQUIRE(calculate_gpa(120, 390) == 3.25);
+	REQUIRE(calculate_gpa(90, 180) == 2.0);
 }

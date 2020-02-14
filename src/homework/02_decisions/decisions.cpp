@@ -1,4 +1,5 @@
 //write include statement for decisions header
+#include<iostream>
 #include "decisions.h"
 
 //Write code for function get_grade_points that accepts a string letter_grade and returns 
@@ -37,24 +38,19 @@ int get_grade_points(std::string letter_grade)
 	}
 }
 
-
 //Write code for function calculate_gpa that accepts an int named credit_hours and
 //a double named credit_points.  The function returns the quotient of credit_points divided by
 //credit_hours. In the function account for division by zero by returning a -1.
 double calculate_gpa(int credit_hours, double credit_points)
 {
-	//double gpa;
-	
-	if (credit_points > credit_hours)
+	double gpa = 0.0;
+
+	if (calculate_gpa > 0)
 	{
-		return credit_points/credit_hours;
-	}
-	else if (credit_points < credit_hours)
-	{
-		return -1;
+		return gpa;
 	}
 	else
 	{
-		return credit_points / credit_hours;
+		return -1;
 	}
 }
