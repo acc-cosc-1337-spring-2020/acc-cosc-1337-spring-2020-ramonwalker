@@ -3,6 +3,7 @@
 using std::cout; using std::cin; using std::string;
 //write include statements
 #include "decisions.h"
+#include "decisions.cpp"
 
 /*
 In main write code to capture a letter_grade and credit_hours from the keyboard:
@@ -49,7 +50,6 @@ int main()
 	cin >> credit_hours;
 	sum_credit_points += get_grade_points(letter_grade)  * credit_hours;
 	sum_credit_hours += credit_hours;
-
 
 	double gpa = calculate_gpa(sum_credit_hours, sum_credit_points);
 	cout << "GPA: " << gpa;

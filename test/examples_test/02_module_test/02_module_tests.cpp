@@ -1,25 +1,25 @@
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
-#include "catch.hpp"
+#include "if_else.h"
+#include "switch.h"
 
-TEST_CASE("Verify Test Configuration", "verification")
-{
+TEST_CASE("Verify Test Configuration", "verification"){  
 	REQUIRE(true == true);
 }
 
-
-TEST CASE("Test is even_function")
+TEST_CASE("Test is even_function")
 {
 	REQUIRE(is_even(2) == true);
 	REQUIRE(is_even(3) == false);
 
 }
 
-TEST CASE("Test GENERATION FUNCTION")
+TEST_CASE("Test get generation function")
 {
-	require(get_generation(2010) == "Centenial");
-	require(get_generation(1990) == "Millenial");
-	require(get_generation(1967) == "Generation X");
-	require(get_generation(1947) == "Baby boomer");
-	//require(get_generation(1927) == ""
-	require(get_generation(19544939) == "Invalid Year");
+	REQUIRE(get_generation(2015) == "Invalid Year");
+	REQUIRE(get_generation(2010) == "Centenial");
+	REQUIRE(get_generation(1990) == "Millenial");
+	REQUIRE(get_generation(1970) == "Generation X");
+	REQUIRE(get_generation(1950) == "Baby boomer");
+	REQUIRE(get_generation(1930) == "Silent Generation");
+	REQUIRE(get_generation(1000) == "Invalid Year");
 }
