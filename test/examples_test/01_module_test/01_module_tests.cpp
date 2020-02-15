@@ -11,3 +11,4 @@ TEST_CASE("Test square number function")
 	REQUIRE(square_number(5) == 25);
 	REQUIRE(square_number(4) == 16);
 }
+
