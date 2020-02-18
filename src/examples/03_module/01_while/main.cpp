@@ -12,7 +12,7 @@ int main()
 
 	sum = sum_of_squares(num);
 
-	cout << "Sum of squares for " << num << "is" << sum;
+	cout << "Sum of squares for " << num << " is " << sum;
 
 	return 0;
 }

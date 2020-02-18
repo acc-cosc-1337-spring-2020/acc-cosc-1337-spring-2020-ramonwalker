@@ -1,5 +1,5 @@
-#include "output.h"
-#include<iostream> //form standard library into the main program then tell where
+#include "output.h"//use file code that I created
+#include<iostream>//use standard library
 
 using std::cout;
 

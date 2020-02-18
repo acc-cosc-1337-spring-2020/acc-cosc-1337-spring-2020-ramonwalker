@@ -7,14 +7,14 @@ TEST_CASE("Verify Test Configuration", "verification") {
 	REQUIRE(true == true);
 }
 
-TEST_CASE("Test sum of squares function")
+TEST_CASE("Test sum of squares function") 
 {
-	REQUIRE(sum_of_squares(4) == 30);
 	REQUIRE(sum_of_squares(3) == 14);
+	REQUIRE(sum_of_squares(4) == 30);
 	REQUIRE(sum_of_squares(5) == 55);
 }
 
-TEST_CASE("Test pass by val and ref function")
+TEST_CASE("Test pass by val and ref function") 
 {
 	int num1 = 5, num2 = 10;
 
@@ -23,3 +23,4 @@ TEST_CASE("Test pass by val and ref function")
 	REQUIRE(num1 == 5);
 	REQUIRE(num2 == 50);
 }
+
