@@ -23,5 +23,5 @@ TEST_CASE("Verify credit_hours and credit_points parameter function")
 	REQUIRE(calculate_gpa(12, 45) == 3.75);
 	REQUIRE(calculate_gpa(120, 390) == 3.25);
 	REQUIRE(calculate_gpa(90, 180) == 2.0);
-	REQUIRE(calculate_gpa(0, 180) == -1);
+	REQUIRE(calculate_gpa(-1, 90) == -1);
 }
