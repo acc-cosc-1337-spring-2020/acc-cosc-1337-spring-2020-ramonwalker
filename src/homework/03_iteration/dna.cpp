@@ -48,26 +48,25 @@ c. return string
 string get_dna_complement(string dna)
 {
 	string result = get_reverse_string(dna);
-	string complement = "";
 
 	for (int i = 0; i < result.length(); i++)
 	{
 		if (result[i] == 'A')
 		{
-			complement += 'T';
+			result[i] = 'T';
 		}
 		else if (result[i] == 'T')
 		{
-			complement += 'A';
+			result[i] = 'A';
 		}
 		else if (result[i] == 'G')
 		{
-			complement += 'C';
+			result[i] = 'C';
 		}
 		else if (result[i] == 'C')
 		{
-			complement += 'G';
+			result[i] = 'G';
 		}
 	}
-		return complement;
+		return result;
 }

@@ -19,20 +19,8 @@ TEST_CASE("Verify get_gc_content string dna loop by ref")
 	REQUIRE(dna2 == "CGCTATAG");
 }
 
-TEST_CASE("Verify get_reverse_string dna function")
-{
-	string dna1 = "AGCTATAG";
-	string rev1 = "GATATCGA";
-	REQUIRE(rev1 == dna1);
-
-	string dna2 = "CGCTATAG";
-	string rev2 = "GATATCGC";
-	REQUIRE(rev2 == dna2);	
-}
-
 TEST_CASE("Verify get dna complement")
 {
-	//string comp1 = "";
-	//string comp2 = "";
-	//REQUIRE(comp1 = 'A' += 'T');
+	REQUIRE(get_dna_complement("AAAACCCGGT") == "ACCGGGTTTT");
+	REQUIRE(get_dna_complement("CCCGGAAAAT") == "ATTTTCCGGG");
 }
