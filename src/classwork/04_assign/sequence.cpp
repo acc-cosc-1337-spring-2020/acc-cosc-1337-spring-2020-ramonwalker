@@ -1,3 +1,4 @@
+#include "sequence.h"
 //write include statements 
 
 
@@ -13,3 +14,7 @@ a string vector search_value, and a string replace_value.
 The function will iterate through the vector and search for the search_value and if found will
 replace the vector element with the replace_value.
 */
+
+void display_vector(const int & str)
+{
+}

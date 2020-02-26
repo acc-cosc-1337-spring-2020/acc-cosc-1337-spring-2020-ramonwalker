@@ -1,1 +1,16 @@
 //bank_account.h
+class BankAccount
+{
+public:
+	BankAccount(int b) : balance {b} {} // convention practice guidance for C++ 11
+
+	int get_balance()const
+	{
+		return balance; 
+	}
+	void deposit(int amount);
+	void withdraw(int amount);
+
+private:
+	int balance{ 0 };  // different variable from creating it somewhere else
+};
