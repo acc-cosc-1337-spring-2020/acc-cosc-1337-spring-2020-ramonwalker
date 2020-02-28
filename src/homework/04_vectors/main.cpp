@@ -1,6 +1,6 @@
 #include<iostream>
 #include<vector>
-#include "vectors.cpp"
+#include "vectors.h"
 
 /*
 use a vector of int with values 8, 4, 20, 88, 66, 99
@@ -29,7 +29,7 @@ int main()
 		{
 		case 1:
 
-			cout << "Maximum value in teh vector is " << get_max_from_vector(numbers) << endl << endl;
+			cout << "Maximum value in the vector is " << get_max_from_vector(numbers) << endl << endl;
 
 			break;
 		case 2:
@@ -39,7 +39,7 @@ int main()
 
 			result = vector_of_primes(num);
 
-			cout << "\nvector with values";
+			cout << " \nThe vector with values are ";
 
 			for (i = 0; i < result.size(); i++)
 			{ 

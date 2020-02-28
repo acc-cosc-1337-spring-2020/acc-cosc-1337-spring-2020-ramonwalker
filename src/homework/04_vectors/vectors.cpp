@@ -30,14 +30,14 @@ given a number returns true if prime or false if not prime
 @param number: Any whole number
 @return: bool if prime False if not
 */
-bool is_prime(int number)
+bool is_prime(int number) 
 {
 	int i;
 
 	if (number == 2 || number == 3)
 
 		return true;
-	else if (number%2 == 0)
+	else if (number %2 == 0)
 		
 		return false;
 		
@@ -45,7 +45,7 @@ bool is_prime(int number)
 	{
 		for (i = 2; i < number; i++)
 		{
-			if (number%i == 0)
+			if (number %i == 0)
 
 				return false;
 		}
@@ -73,7 +73,6 @@ number is prime.
 vector<int> vector_of_primes(int number)
 {
 	int i;
-	
 	vector<int> result;
 
 	for (i = 2; i < number; i++)
@@ -83,5 +82,5 @@ vector<int> vector_of_primes(int number)
 			result.push_back(i);
 	}
 
-	return result;  // return vector<int>();
+	return result;
 }
