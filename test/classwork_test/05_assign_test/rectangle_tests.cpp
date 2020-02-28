@@ -8,12 +8,12 @@ TEST_CASE("Verify Test Configuration", "verification") {
 
 TEST_CASE("Test width by height fators to area")
 {
-	Rect rectangles(20);
-	REQUIRE(rectangles.get_area() == 20);
+	Rect rectangle1(4, 5);
+	REQUIRE(rectangle1.get_area() == 20);
 
-	Rect rectangles(100);
-	REQUIRE(rectangles.get_area() == 100);
+	Rect rectangle2(10, 10);
+	REQUIRE(rectangle2.get_area() == 100);
 
-	Rect rectangels(1000);
-	REQUIRE(rectangles.get_area() == 1000);
+	Rect rectangle3(100, 10);
+	REQUIRE(rectangle3.get_area() == 1000);
 }
