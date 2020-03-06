@@ -36,3 +36,15 @@ TEST_CASE("Test Bank account withdrawal")
 	REQUIRE_THROWS_AS(account.withdraw(451), Invalid);
 	REQUIRE(account.get_balance() == 450);
 }
+
+TEST_CASE("")
+{
+
+	REQUIRE_THROWS_AS() ==
+}
+
+TEST_CASE("Test BankAcount static rate initialization")
+{
+	BankAccount account;
+	REQUIRE(account.get_rate() == 0.025);
+}
