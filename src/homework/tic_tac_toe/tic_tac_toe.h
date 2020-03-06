@@ -11,6 +11,12 @@ public:
 	}
 	void start_game(string first_player);
 	void mark_board(int positon);
+	string get_player()const{ return next_player;}
+
+private:
+	string get_player;
+	string player;
+	void set_next_player();
 
 };
 

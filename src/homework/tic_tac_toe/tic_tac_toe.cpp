@@ -78,3 +78,16 @@ void TicTacToe::mark_board(int positon)
 		}
 	}
 }
+
+void TicTacToe::set_next_player()
+{
+	if (player == "X")
+	{
+		next_player = "O";
+
+		else
+		{
+			next_player = "X";
+		}
+	}
+}
