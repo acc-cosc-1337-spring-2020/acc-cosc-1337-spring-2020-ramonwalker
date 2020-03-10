@@ -2,10 +2,11 @@
 #include "tic_tac_toe.h"
 #include<vector>
 
-using std namespace;
+//using std namespace;
 
 int main()
 {
+	/*
 	cout << "Welcome to TicTacToe. Please enter an X or O.;
 
 	void start_game();
@@ -28,6 +29,6 @@ int main()
 			cout << msg.get_error();
 		}
 			
-	}
+	}*/
 	return 0;
 }

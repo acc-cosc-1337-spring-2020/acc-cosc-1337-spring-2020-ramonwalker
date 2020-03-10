@@ -2,92 +2,44 @@
 
 void TicTacToe::start_game(string first_player)
 {
-	int choice;
 
-	if (choice == "X" || choice == "O")
+	if (first_player == "X" || first_player == "O")
 	{
-		return choice;
-
-		else if (choice == "" || choice == '')
-		{
-			throw Invalid("Must start game first.");
-		}
-		else
-		{
-			throw Invalid("Value not in range.");
-		}
-
+		player = first_player;
 	}
+	else 
+	{
+		throw Invalid("Player must be X or O.");
+	}
+	
+
+	
 
 }
 
-void TicTacToe::mark_board(int positon)
+void TicTacToe::mark_board(int position)
 {
-	int position[10] = { '1', '2','3','4','5','6','7','8','9' };
-	int player = choice, i;
-	char mark = (player == 1) ? 'X' : 'O';
-
+	if (position < 1 || position > 9)
 	{
-		if (choice == 1 && position[1] == '1')
-
-			position[1] = mark;
-
-		else if (choice == 2 && position[2] == '2')
-
-			position[2] = mark;
-
-		else if (choice == 2 && position[2] == '2')
-
-			position[2] = mark;
-
-		else if (choice == 3 && position[3] == '3')
-
-			position[3] = mark;
-
-		else if (choice == 4 && position[4] == '4')
-
-			position[4] = mark;
-
-		else if (choice == 5 && position[5] == '5')
-
-			position[5] = mark;
-
-		else if (choice == 6 && position[6] == '6')
-
-			position[6] = mark;
-
-		else if (choice == 7 && position[7] == '7')
-
-			position[7] = mark;
-
-		else if (choice == 8 && position[8] == '8')
-
-			position[8] = mark;
-
-		else if (choice == 9 && position[9] == '9')
-
-			position[9] = mark;
-
-		else if (choice == "" || choice == '')
-		{
-			throw Invalid("Position must be 1 to 9.");
-		}
-		else
-		{
-			position != mark;
-		}
+		throw Invalid("Position must be between 1 and 9.");
 	}
+
+	if (player == "")
+	{
+		throw Invalid(" Must start game first.");
+	}
+	set_next_player();
 }
 
 void TicTacToe::set_next_player()
 {
 	if (player == "X")
 	{
-		next_player = "O";
-
-		else
-		{
-			next_player = "X";
-		}
+		player = "O";
 	}
+	else
+	{
+		player = "X";
+	}
+	
 }

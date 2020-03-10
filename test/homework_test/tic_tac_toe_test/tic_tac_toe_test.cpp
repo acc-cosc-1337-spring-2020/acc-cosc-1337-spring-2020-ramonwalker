@@ -6,48 +6,52 @@ TEST_CASE("Verify Test Configuration", "verification") {
 	REQUIRE(true == true);
 }
 
-TEST_CASE("Test can't call mark board before start of game")
+TEST_CASE("Verify TicTacToe mark board function")
 {
-	TicTacToe vector<int> postion{ 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-	REQUIRE(msg.get_choice() == { 1, 2, 3, 4, 5, 6, 7, 8, 9};
-
-	REQUIRE_THROWS_AS(board.position{ 10 }, Invalid);
-	REQUIRE(msg.get_choice() == {10};
+	TicTacToe game;
+	REQUIRE_THROWS_AS(game.mark_board(1), Invalid);
 }
 
-TEST_CASE("Test for first player to X")
+TEST_CASE("Verify TicTacToe start game function")
 {
-	std::string firstplayer == "X";
-	REQUIRE(msg.get_choice() == "X";
+	TicTacToe game;
+	REQUIRE_THROWS_AS(game.start_game("A"), Invalid);
+}
 
-	REQUIRE_THROWS_AS(choice.player != "X", Invalid);
-	REQUIRE(msg.get_error() == "X";
+TEST_CASE("Verify TicTacToe set first player function X")
+{
+	TicTacToe game;
+	game.start_game("X");
+
+	REQUIRE(game.get_player() == "X");
+}
+
+TEST_CASE("Verify TicTacToe set first player function O")
+{
+	TicTacToe game;
+	game.start_game("O");
+
+	REQUIRE(game.get_player() == "O");
+}
+
+TEST_CASE("Verify TicTacToe test game flow O")
+{
+	TicTacToe game;
+	game.start_game("X");
+	REQUIRE(game.get_player() == "X");
+
+	game.mark_board(4);
+	REQUIRE(game.get_player() == "O");
 
 }
 
-TEST_CASE("Test set first player to O")
+TEST_CASE("Verify TicTacToe test game flow X")
 {
-	std::string firstplayer == "O";
-	REQUIRE(msg.get_choice() == "O";
+	TicTacToe game;
+	game.start_game("O");
+	REQUIRE(game.get_player() == "O");
 
-	REQUIRE_THROWS_AS(choice.player != "O", Invalid);
-	REQUIRE(msg.get_error() == "O";
-}
+	game.mark_board(4);
+	REQUIRE(game.get_player() == "X");
 
-TEST_CASE("Test start game with X game flow")
-{
-	std::string startgame == "X";
-	REQUIRE(msg.get_choice() == "X";
-
-	RREQUIRE_THROWS_AS(choice.player != "X", Invalid);
-	REQUIRE(msg.get_error() != "X";
-}
-
-TEST_CASE("Test start game with O game flow")
-{
-	std::string startgame == "O";
-	REQUIRE(msg.get_choice() != "O";
-
-	REQREQUIRE_THROWS_AS(choice.player != "O", Invalid);
-	REQUIRE(msg.get_error() == != "O";
 }

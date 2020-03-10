@@ -1,20 +1,15 @@
 #include<string>
-
+using std::string;
 class TicTacToe
 {
 public:
-	TicTacToe(string msg) : message { msg } {}
+	
 
-	string get_message()const
-	{
-		return message;
-	}
 	void start_game(string first_player);
 	void mark_board(int positon);
-	string get_player()const{ return next_player;}
+	string get_player()const{ return player;}
 
 private:
-	string get_player;
 	string player;
 	void set_next_player();
 
