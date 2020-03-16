@@ -43,9 +43,7 @@ TEST_CASE("Test for ranged loop by ref")
 	REQUIRE(name == "zzz");
 }
 
-TEST_CASE("Test for ranged loop w auto by value"{
-}
-
+TEST_CASE("Test for ranged loop w auto by value")
 {
 	std:vector<int> nums{ 9, 10, 99, 5, 67, };
 

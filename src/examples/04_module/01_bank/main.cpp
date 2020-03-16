@@ -1,4 +1,4 @@
-#include "bank_account.h"
+#include "checking_account.h"
 #include<iostream>
 #include<vector>
 #include<string>
@@ -13,6 +13,8 @@ auto c{ 'c' };
 auto flag{ true };    leagacy code*/
 
 {
+	CheckingAccount checking;       // first creates a BankAccount behind the scence then the checking
+	CheckingAccount checking1(90);
 	
 
 	/*std::vector<BankAccount> accounts{ BankAccount(100), BankAccount(200) };

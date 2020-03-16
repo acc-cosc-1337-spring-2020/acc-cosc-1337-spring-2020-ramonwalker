@@ -2,6 +2,9 @@
 #include<string>
 #include<iostream>
 
+#ifndef BANK_ACCOUNT_H   // header guards
+#define BANK_ACCOUNT_H
+
 class BankAccount
 {
 public:
@@ -20,17 +23,25 @@ public:
 	void deposit(int amount);
 	void withdraw(int amount);
 	void open(int amount);
-	double get_rate() { return rate; }
+	double get_rate() const{ return rate; }
 	friend void display_balance(const BankAccount& b); // this display_balance is not part of the class; friend makes it a free function
 	friend std::ostream& operator<<(std::ostream& out, const BankAccount& b);
 	friend std::istream& operator>>(std::istream& in, BankAccount& b);
+
+protected:
+	int balance{ 0 }; // moved from private, no longer needed in private
 			
 private:
-	int balance{ 0 };  // different variable from creating it somewhere else
+	//int balance{ 0 };  // different variable from creating it somewhere else
 	const int min_balance_to_open{ 25 };
 	static double rate;
 	static double init_rate() { return .025; }
 };
+
+#endif
+
+#ifndef INVALID_H  // header guards
+#define INVALID_H
 
 // normally own file
 class Invalid
@@ -41,3 +52,5 @@ public:
 private:
 	std::string message;
 };
+
+#endif

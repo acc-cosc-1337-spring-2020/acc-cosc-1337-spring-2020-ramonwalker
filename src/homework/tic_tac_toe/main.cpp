@@ -1,34 +1,49 @@
 #include<iostream>
 #include "tic_tac_toe.h"
+#include<iostream>
 #include<vector>
+#include<string>
 
-//using std namespace;
+using namespace std;
 
 int main()
 {
-	/*
-	cout << "Welcome to TicTacToe. Please enter an X or O.;
+	string choice, firstplayer;
+	TicTacToe game;
 
 	void start_game();
 
-	cout << "Would you like to continue? 1 to stop." << "\n";
-	cin << answer;
+	cout << "Welcome to TicTacToe! \n" <<
+	"Enter a X or O for first player to start game: ";
+	cin >> choice;
 
-	while (answer != 1)
+	while (choice == "X" || choice == "O")
 	{
-		cout << "Enter a number from 1-9 to place your spot on the board.";
-		cin >> position[] >> "\n";
-
 		try
-		
-			mark_board(postion[]);
-
+		{
+			game.start_game(firstplayer);
 		}
 		catch (Invalid msg)
 		{
-			cout << msg.get_error();
+			cout << msg.get_error() << "\n";
 		}
-			
-	}*/
-	return 0;
+	}
+		do
+		{
+			try
+			{
+				int position;
+				cout << "Please select a postion: " << "\n";
+				cin >> position;
+				game.mark_board(position);
+			}
+			catch (Invalid msg)
+			{
+				cout << msg.get_error() << "\n";
+			}
+			cout << "Do you want to continue: ";
+			cin >> choice;
+		} while (choice == "Y" || choice == "y");
+
+		return 0;
 }

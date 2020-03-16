@@ -55,3 +55,17 @@ TEST_CASE("Verify TicTacToe test game flow X")
 	REQUIRE(game.get_player() == "X");
 
 }
+TEST_CASE("Game ends when board is full")
+{
+	TicTacToe game;
+	game.start_game("X");
+
+	for (int i = 1; i < 9; ++i)
+	{
+		game.mark_board(i);
+		REQUIRE(game.game_over() == false);
+	}
+
+	game.mark_board(9);
+	REQUIRE(game.game_over() == true);
+}
