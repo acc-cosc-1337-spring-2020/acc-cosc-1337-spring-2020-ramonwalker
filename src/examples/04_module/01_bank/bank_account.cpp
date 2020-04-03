@@ -16,6 +16,10 @@ void BankAccount::deposit(int amount) // connects to the header file;
 	}
 }
 
+void BankAccount::withdraw(int amount)
+{
+}
+
 void BankAccount::open(int amount)
 {
 	if (amount < min_balance_to_open)
@@ -26,7 +30,7 @@ void BankAccount::open(int amount)
 	balance += amount;
 }
 
-double BankAccount::rate = init_rate();
+double BankAccount::rate = init_rate(); // allow to access private functions or private class members
 
 void display_balance(const BankAccount & b)
 {

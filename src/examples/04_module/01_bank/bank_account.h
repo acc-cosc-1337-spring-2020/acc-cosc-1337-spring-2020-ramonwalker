@@ -17,9 +17,9 @@ public:
 	void deposit(int amount);
 	void withdraw(int amount);*/
 
-	BankAccount() = default;
+	BankAccount() = default; // we want the bank account constructor to do nothing
 	explicit BankAccount(int b) : balance{ b } {}
-	int get_balance()const { return balance; }
+	virtual int get_balance()const { return balance; }
 	void deposit(int amount);
 	void withdraw(int amount);
 	void open(int amount);

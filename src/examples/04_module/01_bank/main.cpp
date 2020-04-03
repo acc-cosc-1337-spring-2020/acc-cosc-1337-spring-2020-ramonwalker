@@ -1,31 +1,40 @@
 #include "checking_account.h"
+#include "savings_account.h"
 #include<iostream>
 #include<vector>
 #include<string>
+#include<memory>
 
 using std::cout; using std::cin;
+using std::unique_ptr; using std::make_unique;
 
 int main()
+{   /* c++ 98
+	SavingsAccount* s = new SavingsAccount(500);
+	// some more code would go here
+	delete s;
+	s = nullptr;*/
 
-/*auto num{ 0 };
-auto num1{ 1.5 };
-auto c{ 'c' };
-auto flag{ true };    leagacy code*/
+	// c++ 11
+	unique_ptr<BandkAcccount> s = make_unique<SavingsAccount> (90);
+	unique_ptr<BankAccount> c = make_unique<CheckingAccouunt> (100);
 
-{
-	CheckingAccount checking;       // first creates a BankAccount behind the scence then the checking
+
+	CheckingAccount checking;   
 	CheckingAccount checking1(90);
 	
 
-	/*std::vector<BankAccount> accounts{ BankAccount(100), BankAccount(200) };
-	
-		for (auto act : accounts)
+	std::vector<unique_ptr<BankAccount>> accounts;
+	accounts.push_back(std::move(s));
+	accounts.push_back(std::move(c));
+
+		for (auto &act : accounts)
 
 		{
 			cout << act.get_balance() << "\n";
-		}*/
-	
-
+		}
+		
+	/*
 	BankAccount account(500);
 	cin >> account;
 	cout << account;
@@ -50,7 +59,7 @@ auto flag{ true };    leagacy code*/
 	catch (Invalid e)
 	{
 		cout << e.get_error() << "\n";
-	}
+	}*/
 
 	return 0;
 }
