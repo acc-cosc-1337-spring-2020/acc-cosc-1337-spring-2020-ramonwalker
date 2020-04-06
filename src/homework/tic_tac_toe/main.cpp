@@ -10,7 +10,6 @@ int main()
 	string choice, firstplayer;
 	int position;
 	TicTacToe game;
-	bool winner;
 	
 do
 {
@@ -38,13 +37,12 @@ do
 				game.mark_board(position);
 				game.display_board();
 				game.game_over();
-				winner = game.game_over();
 			}
 			catch (Invalid msg)
 			{
 				cout << msg.get_error() << "\n";
 			}
-		} while (winner == false);
+		} while (game.game_over() == false);
 
 		cout << "The winner is: " << game.get_winner() << "\n";
 
