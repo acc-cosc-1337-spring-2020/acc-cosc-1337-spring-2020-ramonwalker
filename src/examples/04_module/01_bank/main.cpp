@@ -1,5 +1,7 @@
 #include "checking_account.h"
 #include "savings_account.h"
+#include "customer.h"
+#include "atm.h"
 #include<iostream>
 #include<vector>
 #include<string>
@@ -9,33 +11,41 @@ using std::cout; using std::cin;
 using std::unique_ptr; using std::make_unique;
 
 int main()
-{   /* c++ 98
-	SavingsAccount* s = new SavingsAccount(500);
-	// some more code would go here
-	delete s;
-	s = nullptr;*/
-
-	// c++ 11
-	unique_ptr<BandkAcccount> s = make_unique<SavingsAccount> (90);
-	unique_ptr<BankAccount> c = make_unique<CheckingAccouunt> (100);
-
-
-	CheckingAccount checking;   
-	CheckingAccount checking1(90);
+{ 
+	unique_ptr<BankAccount> s = make_unique<SavingsAccount> (90); // heap variable or a pointer behind the scences
+	unique_ptr<BankAccount> c = make_unique<CheckingAccount>(100);
 	
+	Customer cust;
+	cust.add_account(s);
+	cust.add_account(c);
+
+	ATM atm(cust);
+	cout << atm;
+
 
 	std::vector<unique_ptr<BankAccount>> accounts;
 	accounts.push_back(std::move(s));
 	accounts.push_back(std::move(c));
-
+/*
 		for (auto &act : accounts)
 
 		{
-			cout << act.get_balance() << "\n";
-		}
+			cout << act->get_balance() << "\n";
+		}*/
 		
 	/*
-	BankAccount account(500);
+	ensure that ths is in the loop for...do you want to play again, y then loop
+
+	Ttt game;
+
+	loop for mark board
+
+	game ends
+	call manager save game
+	
+	
+	
+
 	cin >> account;
 	cout << account;
 	display_balance(account);

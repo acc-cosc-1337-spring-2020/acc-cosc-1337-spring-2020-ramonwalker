@@ -2,6 +2,8 @@
 #include "catch.hpp"
 #include "bank_account.h"
 #include "checking_account.h"
+#include<memory>
+
 
 TEST_CASE("Verify Test Configuration", "verification") {
 	REQUIRE(true == true);

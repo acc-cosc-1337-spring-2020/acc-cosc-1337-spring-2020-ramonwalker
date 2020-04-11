@@ -3,6 +3,13 @@
 
 //bank_account.cpp
 
+int BankAccount::get_balance() const
+{
+
+
+	return 0;
+}
+
 void BankAccount::deposit(int amount) // connects to the header file; 
 {
 	// then provide implementation for it

@@ -1,5 +1,11 @@
+#ifndef TIC_TAC_TOE_H
+#define TIC_TAC_TOE_H
+
 #include<string>
 #include<vector>
+#include<iostream> 
+
+
 
 using std::string;
 
@@ -10,9 +16,11 @@ public:
 	bool game_over();
 	void start_game(string first_player);
 	void mark_board(int positon);
-	string get_player()const{ return player;}
-	void display_board() const;
-	string get_winner() { return winner; }
+	string get_player() const{ return player;}
+	//void display_board() const;
+	string get_winner() const { return winner; } // added const
+	friend std::istream & operator>> (std::istream & in, TicTacToe & p); 
+	friend std::ostream & operator>> (std::ostream & out, const TicTacToe & p);
 
 private:
 	string player;
@@ -28,6 +36,11 @@ private:
 
 };
 
+#endif
+
+#ifndef INVALID_H
+#define INVALID_H
+
 class Invalid
 {
 public:
@@ -36,3 +49,5 @@ public:
 private:
 	std::string message;
 };
+
+#endif //!TIC_TAC_TOE_H

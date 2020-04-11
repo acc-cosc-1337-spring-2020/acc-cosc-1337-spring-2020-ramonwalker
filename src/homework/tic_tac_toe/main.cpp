@@ -1,57 +1,55 @@
-#include<iostream>
 #include "tic_tac_toe.h"
-#include<vector>
-#include<string>
+#include "tic_tac_toe_manager.h"
+#include <iostream>
 
-using namespace std;
+using std::cin; using std::cout;
 
 int main()
 {
-	string choice, firstplayer;
-	int position;
+	string firstplayer;
+	char choice;
+	int player;
+	bool win = false;
 	TicTacToe game;
+	TicTacToeManager manager;
 	
-do
-{
 	do
 	{
-		try
+		do
 		{
+			player = 1;
 			cout << "Welcome to TicTacToe! \n" <<
 				"Enter a X or O for the first player to start game: ";
 			cin >> firstplayer;
-			game.start_game(firstplayer);
-		}
-		catch (Invalid msg)
-		{
-			cout << msg.get_error() << "\n";
-		}
-
-		do
-		{
 			try
 			{
-				int position;
-				cout << "Player, please select a postion: " << "\n";
-				cin >> position;
-				game.mark_board(position);
-				game.display_board();
-				game.game_over();
+				game.start_game(firstplayer);
 			}
 			catch (Invalid msg)
 			{
 				cout << msg.get_error() << "\n";
+				player = 0;
 			}
+		} while (player != 1);
+
+		do
+		{
+			cout >> game;
+			cin >> game;
+			game.game_over();
+
+
 		} while (game.game_over() == false);
-
+		manager.save_game(game);
+		cout >> game;
 		cout << "The winner is: " << game.get_winner() << "\n";
+		cout << manager;
+		cout << "Would you like to continue, y or n: " << "\n";
+		cin >> choice;
 
-	} while (!(firstplayer == "X" || firstplayer == "O"));
+	} while (choice == 'y' || choice == 'Y');
 
-	cout << "Would you like to continue, y or n: ";
-	cin >> choice;
+      cout << manager;
 
-} while (choice == "Y" || choice == "y");
-	
-  return 0;
+	  return 0;
 }

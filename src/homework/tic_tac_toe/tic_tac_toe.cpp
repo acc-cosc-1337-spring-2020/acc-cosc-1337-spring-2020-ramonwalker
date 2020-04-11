@@ -1,7 +1,8 @@
 #include "tic_tac_toe.h"
 #include<iostream>
+#include<stdlib.h>
 
-using namespace std;
+using std::cin; using std::cout;
 
 bool TicTacToe::game_over()
 {
@@ -24,13 +25,12 @@ void TicTacToe::start_game(string first_player)
 	if (first_player == "X" || first_player == "O")
 	{
 		player = first_player;
+		clear_board();
 	}
 	else 
 	{
 		throw Invalid("Player must be X or O.");
 	}
-	player = first_player;
-	clear_board();
 }
 
 void TicTacToe::mark_board(int position)
@@ -44,17 +44,40 @@ void TicTacToe::mark_board(int position)
 		throw Invalid("Must start game first.");
 	}
 	pegs[position - 1] = player;
-	set_next_player();
-}
-
-void TicTacToe::display_board() const
-{
-	for (int i = 0; i < 9; i += 3)
+	
+	// update for next player if game is over
+	if (game_over() == false) 
 	{
-		cout << pegs[i] << "|" << pegs[i + 1] << "|" << pegs[i + 2] << "\n";
+		set_next_player();
 	}
 }
 
+std::istream & operator>>(std::istream & in, TicTacToe & p)
+{
+	int position{ 0 };
+	cout << "Player " << p.get_player() << " , please select a postion: " << "\n";
+	in >> position;
+
+	try
+	{
+		p.mark_board(position);
+	}
+	catch (Invalid msg)
+	{
+		cout << msg.get_error() << "\n";
+	}
+	return in;
+}
+
+std::ostream & operator>>(std::ostream & out, const TicTacToe & p)
+{
+	for (int i = 0; i < 9; i += 3)
+	{
+		out << p.pegs[i] << "|" << p.pegs[i + 1] << "|" << p.pegs[i + 2] << "\n";
+	}
+	
+	return out;
+}
 
 void TicTacToe::set_next_player()
 {
@@ -66,7 +89,6 @@ void TicTacToe::set_next_player()
 	{
 		player = "X";
 	}
-	
 }
 
 void TicTacToe::set_winner()
