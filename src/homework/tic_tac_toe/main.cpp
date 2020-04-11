@@ -34,14 +34,14 @@ int main()
 
 		do
 		{
-			cout >> game;
+			cout << game;
 			cin >> game;
 			game.game_over();
 
-
 		} while (game.game_over() == false);
+
 		manager.save_game(game);
-		cout >> game;
+		cout << game;
 		cout << "The winner is: " << game.get_winner() << "\n";
 		cout << manager;
 		cout << "Would you like to continue, y or n: " << "\n";

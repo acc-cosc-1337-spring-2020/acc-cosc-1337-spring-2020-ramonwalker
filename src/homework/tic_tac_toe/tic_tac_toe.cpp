@@ -1,6 +1,5 @@
 #include "tic_tac_toe.h"
 #include<iostream>
-#include<stdlib.h>
 
 using std::cin; using std::cout;
 
@@ -45,7 +44,6 @@ void TicTacToe::mark_board(int position)
 	}
 	pegs[position - 1] = player;
 	
-	// update for next player if game is over
 	if (game_over() == false) 
 	{
 		set_next_player();
@@ -69,7 +67,7 @@ std::istream & operator>>(std::istream & in, TicTacToe & p)
 	return in;
 }
 
-std::ostream & operator>>(std::ostream & out, const TicTacToe & p)
+std::ostream & operator<<(std::ostream & out, const TicTacToe & p)
 {
 	for (int i = 0; i < 9; i += 3)
 	{
@@ -95,11 +93,11 @@ void TicTacToe::set_winner()
 {
 	if (player == "X")
 	{
-		winner = "O";
+		winner = "X";
 	}
 	else
 	{
-		winner = "X";
+		winner = "O";
 	}
 }
 
