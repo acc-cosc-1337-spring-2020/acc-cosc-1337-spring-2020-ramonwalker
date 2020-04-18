@@ -2,12 +2,9 @@
 #include<iostream>
 
 //bank_account.cpp
-
 int BankAccount::get_balance() const
 {
-
-
-	return 0;
+	return balance;
 }
 
 void BankAccount::deposit(int amount) // connects to the header file; 
@@ -25,6 +22,18 @@ void BankAccount::deposit(int amount) // connects to the header file;
 
 void BankAccount::withdraw(int amount)
 {
+	if (amount < 0)
+	{
+		throw Invalid("Amount must be greater than 0.");
+	}
+	else if (amount > balance)
+	{
+		throw Invalid("Insufficient Funds");
+	}
+	else
+	{
+		balance -= amount;
+	}
 }
 
 void BankAccount::open(int amount)

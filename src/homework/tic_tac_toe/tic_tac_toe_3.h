@@ -1,12 +1,17 @@
-#include<string>
+#include"tic_tac_toe.h"
 
+#ifndef TicTacToe_3_H
+#define TicTacToe_3_H
 
-
-class Invalid
+class TicTacToeThree : public TicTacToe
 {
 public:
-	Invalid(std::string msg) : message{ msg } {}
-	std::string get_error()const { return message; }
+	TicTacToeThree() : TicTacToe(3) {}
+
 private:
-	std::string message;
+	bool check_column_win();
+	bool check_row_win();
+	bool check_diagonal_win();
 };
+
+#endif // !TicTacToe_3_H

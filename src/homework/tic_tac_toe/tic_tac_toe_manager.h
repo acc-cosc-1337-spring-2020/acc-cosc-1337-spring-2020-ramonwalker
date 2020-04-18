@@ -8,15 +8,16 @@
 
 using std::string;
 
-class TicTacToeManager : public TicTacToe
+class TicTacToeManager
 {
 public:
 
-	void save_game(const TicTacToe b);
+	void save_game(TicTacToe b);
 	friend std::ostream & operator <<(std::ostream & out, const TicTacToeManager & manager);
-	
+	void get_winner_total(int& x, int& o, int& t);
+
 private:
-	std::vector <TicTacToe> games;
+	std::vector<std::reference_wrapper<TicTacToe>> games;
 	int x_win{ 0 }; 
 	int o_win{ 0 }; 
 	int ties{ 0 }; 
