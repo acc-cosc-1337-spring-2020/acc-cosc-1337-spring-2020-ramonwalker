@@ -20,24 +20,15 @@ void TicTacToeManager::get_winner_total(int & x, int & o, int & t)
 
 std::ostream & operator<<(std::ostream & out, const TicTacToeManager & manager)
 {
-		int x_win { 0 }, o_win { 0 }, ties { 0 };
 
 		for (auto & game : manager.games)
 		{
-			out << game;
-			if (game.get().get_winner() == "X")
-			{
-				x_win = x_win + 1;
-			}
-			else if (game.get().get_winner() == "O")
-			{
-				o_win = o_win + 1;
-			}
-			else
-			{
-				ties = ties + 1;
-			}
+			out << game <<"\n";
 		}
+
+		out << "X won: " << manager.x_win << "\n"
+			<< "O won: " << manager.o_win << "\n"
+			<< "Number of ties are: " << manager.ties << "\n";
 
 		return out;
 }
