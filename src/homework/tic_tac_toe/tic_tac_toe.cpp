@@ -12,7 +12,7 @@ bool TicTacToe::game_over()
 	}
 	else if (check_board_full() == true)
 	{
-		winner = "C";
+		winner = 'C';
 		return true;
 	}
 	return false;
@@ -44,7 +44,10 @@ void TicTacToe::mark_board(int position)
 	}
 	pegs[position - 1] = player;
 	
-	set_next_player();
+	if (game_over() == false) 
+	{
+		set_next_player();
+	}
 }
 
 std::istream & operator>>(std::istream & in, TicTacToe & p)
@@ -99,11 +102,11 @@ void TicTacToe::set_winner()
 {
 	if (player == "X")
 	{
-		winner = "O";
+		winner = "X";
 	}
 	else
 	{
-		winner = "X";
+		winner = "O";
 	}
 }
 
