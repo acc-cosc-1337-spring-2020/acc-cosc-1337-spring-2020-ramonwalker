@@ -5,10 +5,10 @@
 //cpp
 using std::cout;
 
-void TicTacToeManager::save_game(TicTacToe b)
+void TicTacToeManager::save_game(unique_ptr<TicTacToe> & b)
 {
-	games.push_back(b);
-	update_winner_count(b.get_winner());
+	update_winner_count(b->get_winner());
+	games.push_back(std::move(b));
 }
 
 void TicTacToeManager::get_winner_total(int & x, int & o, int & t)
@@ -24,12 +24,11 @@ std::ostream & operator<<(std::ostream & out, const TicTacToeManager & manager)
 
 		for (auto & game : manager.games)
 		{
-			out << game;
-			if (game.get().get_winner() == "X")
+			if (game->get_winner() == "X")
 			{
 				x_win = x_win + 1;
 			}
-			else if (game.get().get_winner() == "O")
+			else if (game->get_winner() == "O")
 			{
 				o_win = o_win + 1;
 			}

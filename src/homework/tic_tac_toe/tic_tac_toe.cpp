@@ -24,7 +24,6 @@ void TicTacToe::start_game(string first_player)
 	if (first_player == "X" || first_player == "O")
 	{
 		player = first_player;
-		clear_board();
 	}
 	else 
 	{

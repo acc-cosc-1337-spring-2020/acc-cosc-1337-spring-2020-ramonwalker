@@ -4,91 +4,51 @@
 #include "tic_tac_toe_manager.h"
 #include <iostream>
 #include <string>
+#include <memory>
 
+using std::unique_ptr; using std::make_unique;
 using std::cin; using std::cout;
 
 int main()
 {
 	string firstplayer, choice;
-	int player, x, o, t;
+	int gametype, x, o, t;
 	bool winner;
-	std::vector<std::reference_wrapper<TicTacToe>> games;
-	TicTacToeManager manager;
-		
+	unique_ptr<TicTacToe> game;
+
+	unique_ptr<TicTacToeManager> manager = make_unique<TicTacToeManager>();
+
 	do
 	{
 		cout << "Please enter 3 for a 3x3 TicTacToe game or 4 for a 4x4 TicTacToe game: " << "\n";
-		cin >> player;
+		cin >> gametype;
 		
-		if (player == 3)
+		if (gametype == 3)
 		{
-			TicTacToeThree three;
-			games.push_back(three);
-
-			while (!(firstplayer == "X" || firstplayer == "O"))
-			{
-				try
-				{
-				cout << "Welcome to TicTacToe! \n" <<
-					"Enter a X or O for the first player to start game: ";
-				cin >> firstplayer;
-				three.start_game(firstplayer);
-				}
-				catch (Invalid msg)
-				{
-					cout << msg.get_error() << "\n";
-				}
-			}
-			do
-			{
-				cout << three;
-				cin >> three;
-				winner = three.game_over();
-
-			} while (three.game_over() == false);
-
-			manager.save_game(three);
-			cout << three;
-			cout << "\n" << "The winner is: " << three.get_winner() << "\n";
-			manager.get_winner_total(x, o, t);
+			game = make_unique<TicTacToeThree>();
 		}
-		else if (player == 4)
+		else if (gametype == 4)
 		{
-			TicTacToeFour four;
-			games.push_back(four);
-			
-			while (!(firstplayer == "X" || firstplayer == "O"))
-			{
-				try
-				{
-					cout << "Welcome to TicTacToe! \n" <<
-						"Enter a X or O for the first player to start game: ";
-					cin >> firstplayer;
-					four.start_game(firstplayer);
-				}
-				catch (Invalid msg)
-				{
-					cout << msg.get_error() << "\n";
-					player = 0;
-				}
-			}
-			do
-			{
-				cout << four;
-				cin >> four;
-				winner = four.game_over();
-
-			} while (four.game_over() == false);
-
-			manager.save_game(four);
-			cout << four;
-			cout << "The winner is: " << four.get_winner() << "\n";
-			manager.get_winner_total(x, o, t);
+			game = make_unique<TicTacToeFour>();
 		}
+		cout << "Welcome to TicTacToe! \n" <<
+				"Enter a X or O for the first player to start game: ";
+		cin >> firstplayer;
+		game->start_game(firstplayer);
+
+		while (game->game_over() == false)
+		{
+			cin >> *game;
+			cout << *game;
+		}
+		manager->save_game(game);
+		cout << "\n" << "The winner is: " << "\n";
+		manager->get_winner_total(x, o, t);
 		cout << "Would you like to continue, y or n: ";
 		cin >> choice;
 
 	} while (choice == "Y" || choice == "y");
+	  cout << *manager;
 
 return 0;
 }
