@@ -41,9 +41,9 @@ int main()
 			cin >> *game;
 			cout << *game;
 		}
+		cout << "\n" << "The winner is: " << game->get_winner()<<"\n";
 		manager->save_game(game);
-		cout << "\n" << "The winner is: " << "\n";
-		manager->get_winner_total(x, o, t);
+
 		cout << "Would you like to continue, y or n: ";
 		cin >> choice;
 
