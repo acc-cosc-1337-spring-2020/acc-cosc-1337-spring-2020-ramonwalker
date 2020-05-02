@@ -2,21 +2,24 @@
 #include "tic_tac_toe_3.h"
 #include "tic_tac_toe_4.h"
 #include "tic_tac_toe_manager.h"
-#include <iostream>
 #include <string>
 #include <memory>
+#include <iostream>
 
 using std::unique_ptr; using std::make_unique;
 using std::cin; using std::cout;
 
+
 int main()
 {
 	string firstplayer, choice;
-	int gametype, x, o, t;
+	int gametype;
+	// , x, o, t;
 	bool winner;
 	unique_ptr<TicTacToe> game;
 
 	unique_ptr<TicTacToeManager> manager = make_unique<TicTacToeManager>();
+	TicTacToeData data;
 
 	do
 	{
@@ -48,7 +51,7 @@ int main()
 		cin >> choice;
 
 	} while (choice == "Y" || choice == "y");
-	  cout << *manager;
+	  cout << *manager << "\n";
 
 return 0;
 }

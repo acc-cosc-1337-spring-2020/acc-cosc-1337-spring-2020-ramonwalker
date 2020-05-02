@@ -4,7 +4,7 @@
 
 std::ostream & operator<<(std::ostream & out, const ATM & a)
 {
-	out << *account << "\n";
+	out << a.customer << "\n";
 
 	return out;
 }

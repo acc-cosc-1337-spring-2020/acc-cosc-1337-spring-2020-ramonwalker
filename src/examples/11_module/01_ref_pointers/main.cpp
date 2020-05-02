@@ -25,7 +25,6 @@ int main()
 	cout << "Value of p: " << p << "\n""\n";
 
 	// pass by pointer to modify the value of p
-
 		
 	return 0;
 }

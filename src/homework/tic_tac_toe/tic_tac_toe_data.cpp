@@ -1,41 +1,53 @@
 #include "tic_tac_toe_data.h"
-#include<string>
+#include "tic_tac_toe_3.h"
+#include "tic_tac_toe_4.h"
 
 //cpp
 
-void TicTacToeData::save_pegs(const std::vector<TicTacToe>& pgs)
+void TicTacToeData::save_pegs(const std::vector<std::unique_ptr<TicTacToe>>& pgs)
 {
 	std::ofstream file_out(file_name, std::ios_base::trunc);
-
-	for (auto peg : pgs)
+	for (auto peg : pegs)
 	{
-		file_out << peg.get_player();
+		//file_out << get_pegs;
 		file_out << " ";
-		file_out << peg.get_winner();
+		file_out << get_winner();
 		file_out << "\n";
 	}
-
 	file_out.close();
 }
 
-std::vector<TicTacToe> TicTacToeData::get_pegs() const
+std::vector<std::unique_ptr<TicTacToe>> TicTacToeData::get_games()
 {
-	std::vector<TicTacToe> pegs;
 	std::ifstream read_file(file_name);
+	std::vector<std::unique_ptr<TicTacToe>> boards;
 
-	string player;
-	string winner;
-
-	if (read_file.is_open())
+	while (read_file.is_open())
 	{
-		while (read_file >> player >> winner)
+		std::vector<std::string> pegs;
+		string line;
+
+		while (getline(read_file, line))
 		{
-			TicTacToe peg(player, winner);
-			pegs.push_back(peg);
+			for (int ch = 0; ch < line.size() - 1; ch++)
+			{
+				string chString(1, line[ch]);
+				pegs.push_back(chString);
+			}
+			string winner = pegs[-1];
+			std::unique_ptr<TicTacToe> board;
+
+			if (pegs.size() <= 9)
+			{
+				board = std::make_unique<TicTacToeThree>(pegs, winner);
+			}
+			else if (pegs.size() <= 16)
+			{
+				board = std::make_unique<TicTacToeFour>(pegs, winner);
+			}
+			boards.push_back(std::move(board));
 		}
+		read_file.close();
 	}
-
-	read_file.close();
-
-	return pegs;
+	return boards;
 }

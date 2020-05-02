@@ -1,20 +1,22 @@
-//atm.
+//atm.h
+#include <iostream>
+#include "customer.h"
+
 #ifndef ATM_H
 #define ATM_H
-#include "customer.h"
+#include<memory>
 
 class ATM
 {
 public:
+	ATM(Customer& c) : customer{ std::move(c) }
+	{
 
-	ATM(Customer& c) : customer(std::move(c)){}
-	friend std::ostream & operator<<(std::ostream & out, const ATM & a);
+	}
+	friend std::ostream& operator<<(std::ostream& out, const ATM& b);
 
 private:
-
 	Customer customer;
-
 };
-
 
 #endif // !ATM_H

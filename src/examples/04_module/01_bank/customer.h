@@ -5,18 +5,21 @@
 #include<memory>
 #include "bank_account.h"
 #include<iostream>
+#include "checking_account.h"
+#include "savings_account.h"
 
 class Customer
 {
 public:
 
-	void add_account(std::unique_ptr<BankAccount>& act);
+	Customer(std::vector<std::unique_ptr<BankAccount>>& acts) : accounts{ std::move(acts) }
+	{
+
+	}
 	friend std::ostream& operator<<(std::ostream& out, const Customer& c);
-	//void display_accounts()const;  ....use freind function for homework
 private:
 
 	std::vector <std::unique_ptr<BankAccount>> accounts;
-
 };
 
 #endif  // !CUSTOMER_H

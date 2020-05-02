@@ -1,10 +1,13 @@
 //savings_account.h
 #include "bank_account.h"
+#ifndef SAVINGS_ACCOUNT_H
+#define SAVINGS_ACCOUNT_H
 
-class SavingsAccount : public BankAccount  // Inherit a class...extending
+class SavingsAccount : public BankAccount
 {
 public:
 	SavingsAccount() = default;
-	explicit SavingsAccount(int b) : BankAccount(b) {}  // putting the balance b into BankAccount so later to put in private for BankAccount
-	int get_balance()const { return 5000; }
+	explicit SavingsAccount(int b) : BankAccount(b) {}
+	int get_balance()const { return balance + (1 / 12 * 1.025); }
 };
+endif // !SAVINGS_ACCOUNT_H	

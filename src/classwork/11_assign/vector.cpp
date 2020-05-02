@@ -2,12 +2,13 @@
 #include <iostream>
 
 /*
-Initialize nums to size dynamic array.
-Initialize each array element to 0.
+Allocated dynamic memory for an array of sz(size) elements
+Initialized all of the array elements to 0
 */
 Vector::Vector(size_t sz)
-	: size{ sz }, nums{ new int[sz] }
+	:size{ sz }, nums{ new int[sz], space {size} 
 {
+	std::cout << "allocate memory\n";
 	for (size_t i = 0; i < sz; ++i)
 	{
 		nums[i] = 0;
@@ -15,9 +16,9 @@ Vector::Vector(size_t sz)
 }
 
 /*
- Copy v.size to new class
- Create new dynamic memory array
- Initialize array elements to the v.nums array values
+Set the new class size to the right-hand operand array size
+Allocated a dynamic memory array of size elements
+Initialized all the elements to the value of the right-hand operand(class)
 */
 Vector::Vector(const Vector & v)
 	: size{ v.size }, nums{ new int[v.size] }
@@ -29,14 +30,14 @@ Vector::Vector(const Vector & v)
 }
 
 /*
-Allocate temporary dynamic array of size v (v1)
-Copy v1 elements to temp array
-Deallocate old v2 nums array
-Point v2 nums array to temp array
-Set v2 size to v1 size
-return a self copy of Vector
+Allocated temporary memory of right-hand operand size
+Initialized all temp elements to right-hand operand elements' value
+Deallocated created memory of this class
+Copied temporary memory to this class (nums)
+Set size to right-hand operand size
+Return a dereferenced instance of this class
 */
-Vector & Vector::operator =(const Vector & v)
+Vector & Vector::operator=(const Vector & v)
 {
 	int* temp = new int[v.size];
 
@@ -45,7 +46,7 @@ Vector & Vector::operator =(const Vector & v)
 		temp[i] = v[i];
 	}
 
-	delete nums;
+	delete[] nums;
 
 	nums = temp;
 	size = v.size;
@@ -54,29 +55,98 @@ Vector & Vector::operator =(const Vector & v)
 }
 
 /*
-Release dynamic memeory
-Deallocate memory
+Use move source pointer
+Point move source pointer to nothing
 */
+Vector::Vector(Vector && v)
+	: size{ v.size }, nums{ v.nums }
+{
+	v.size = 0;
+	v.nums = nullptr;
+}
+//v = 
+Vector & Vector::operator=(Vector && v)
+{
+	delete nums;
+	nums = v.nums;
+	size = v.size;
+	v.nums = nullptr;
+	v.size = 0;
+
+	return *this;
+}
+
+/*
+Compare space to new allocation if alloc < size return???
+Create temporary dynamic memory of new allocation size
+Copy all current elements to temporary array
+Delete the old memory array (nums)
+Set nums to new temporary memory array
+Set Space = new allocation
+
+*/
+void Vector::Reserve(size_t new_allocation)
+{
+	if (new_allocation <= space)
+	{
+		return;
+	}
+
+	int* temp = new int[new_allocation];
+
+	for (size_t i = 0; i < size; ++i)
+	{
+		temp[i] = nums[i];
+	}
+
+	delete[] nums;
+	nums = temp;
+
+	space = new_allocation;
+}
+
+/*
+Reserve space
+
+*/
+void Vector::Resize(size_t new_size)
+{
+	Reserve(new_size);
+
+	for (size_t i = size; i < new_size; ++i)
+	{
+		nums[i] = 0;
+	}
+}
+
+void Vector::Push_Back(int value)
+{
+	if (space == 0)
+	{
+		Reserve(RESERVE_DEFAULT_SIZE);
+	}
+	else if (size == space)
+	    // should this be resize or reserve
+		Reserve(space * RESERVE_SIZE_MULTIPLIER);
+	}
+
+	nums[size] = value;
+	++size;
+}
 
 Vector::~Vector()
 {
-	std::cout << "\nrelease memory\n"
+	std::cout << "release memory\n\n";
 	delete[] nums;
 }
-//======================================
-// free function
+
 void use_vector()
 {
-	Vector* v1 = new Vector(3);
-	delete v1;
+	Vector v(3);
 }
 
-Vector(const Vector & v)
+Vector get_vector()
 {
+	Vector v = Vector(3);
+	return v;
 }
-
-Vector & operator=(cosnt Vector & v)
-{
-	// TODO: insert return statement here
-}
-
